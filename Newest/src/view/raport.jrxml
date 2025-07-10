@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3a5c8b82-2924-4673-a812-4ede76089366">
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     mata_pelajaran.`id_pelajaran` AS mata_pelajaran_id_pelajaran,
+     mata_pelajaran.`nama_pelajaran` AS mata_pelajaran_nama_pelajaran,
+     mata_pelajaran.`kategori` AS mata_pelajaran_kategori,
+     mata_pelajaran.`deskripsi` AS mata_pelajaran_deskripsi,
+     mata_pelajaran.`created_at` AS mata_pelajaran_created_at,
+     mata_pelajaran.`updated_at` AS mata_pelajaran_updated_at,
+     siswa.`nama` AS siswa_nama,
+     siswa.`NIS` AS siswa_NIS,
+     siswa.`JK` AS siswa_JK,
+     siswa.`NISN` AS siswa_NISN,
+     siswa.`tempatLahir` AS siswa_tempatLahir,
+     siswa.`tanggalLahir` AS siswa_tanggalLahir,
+     siswa.`agama` AS siswa_agama,
+     siswa.`alamat` AS siswa_alamat,
+     siswa.`noTelp` AS siswa_noTelp,
+     siswa.`tahunMasuk` AS siswa_tahunMasuk,
+     siswa.`status` AS siswa_status
+FROM
+     `mata_pelajaran` mata_pelajaran,
+     `siswa` siswa]]>
+	</queryString>
+	<field name="mata_pelajaran_id_pelajaran" class="java.lang.String"/>
+	<field name="mata_pelajaran_nama_pelajaran" class="java.lang.String"/>
+	<field name="mata_pelajaran_kategori" class="java.lang.String"/>
+	<field name="mata_pelajaran_deskripsi" class="java.lang.String"/>
+	<field name="mata_pelajaran_created_at" class="java.sql.Timestamp"/>
+	<field name="mata_pelajaran_updated_at" class="java.sql.Timestamp"/>
+	<field name="siswa_nama" class="java.lang.String"/>
+	<field name="siswa_NIS" class="java.lang.String"/>
+	<field name="siswa_JK" class="java.lang.String"/>
+	<field name="siswa_NISN" class="java.lang.String"/>
+	<field name="siswa_tempatLahir" class="java.lang.String"/>
+	<field name="siswa_tanggalLahir" class="java.sql.Date"/>
+	<field name="siswa_agama" class="java.lang.String"/>
+	<field name="siswa_alamat" class="java.lang.String"/>
+	<field name="siswa_noTelp" class="java.lang.String"/>
+	<field name="siswa_tahunMasuk" class="java.lang.Integer"/>
+	<field name="siswa_status" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
