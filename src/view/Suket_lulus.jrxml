@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4b7e056e-caaa-4b18-a295-78f5754c4e4c">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="48"/>
+	<parameter name="NIS_PARAMETER" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="today" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+             siswa.`nama` AS siswa_nama,
+             siswa.`NIS` AS siswa_NIS,
+             siswa.`JK` AS siswa_JK,
+             siswa.`NISN` AS siswa_NISN,
+             siswa.`tempatLahir` AS siswa_tempatLahir,
+             siswa.`tanggalLahir` AS siswa_tanggalLahir,
+             siswa.`agama` AS siswa_agama,
+             siswa.`alamat` AS siswa_alamat,
+             siswa.`noTelp` AS siswa_noTelp,
+             siswa.`tahunMasuk` AS siswa_tahunMasuk,
+             siswa.`status` AS siswa_status,
+             nilai.`NIS` AS nilai_NIS,
+             nilai.`id_pelajaran` AS nilai_id_pelajaran,
+             nilai.`nama_pelajaran` AS nilai_nama_pelajaran,
+             nilai.`id_kelas` AS nilai_id_kelas,
+             nilai.`semester` AS nilai_semester,
+             nilai.`tahun_ajaran` AS nilai_tahun_ajaran,
+             nilai.`nilai_akhir` AS nilai_nilai_akhir,
+             nilai.`grade` AS nilai_grade,
+             nilai.`created_at` AS nilai_created_at,
+             nilai.`updated_at` AS nilai_updated_at
+        FROM
+             `siswa` siswa 
+             INNER JOIN `nilai` nilai ON siswa.`NIS` = nilai.`NIS`
+        WHERE 
+             siswa.`NIS` = $P{NIS_PARAMETER}]]>
+	</queryString>
+	<field name="siswa_nama" class="java.lang.String"/>
+	<field name="siswa_NIS" class="java.lang.String"/>
+	<field name="siswa_JK" class="java.lang.String"/>
+	<field name="siswa_NISN" class="java.lang.String"/>
+	<field name="siswa_tempatLahir" class="java.lang.String"/>
+	<field name="siswa_tanggalLahir" class="java.sql.Date"/>
+	<field name="siswa_agama" class="java.lang.String"/>
+	<field name="siswa_alamat" class="java.lang.String"/>
+	<field name="siswa_noTelp" class="java.lang.String"/>
+	<field name="siswa_tahunMasuk" class="java.lang.Integer"/>
+	<field name="siswa_status" class="java.lang.String"/>
+	<field name="nilai_NIS" class="java.lang.String"/>
+	<field name="nilai_id_pelajaran" class="java.lang.String"/>
+	<field name="nilai_nama_pelajaran" class="java.lang.String"/>
+	<field name="nilai_id_kelas" class="java.lang.String"/>
+	<field name="nilai_semester" class="java.lang.String"/>
+	<field name="nilai_tahun_ajaran" class="java.lang.String"/>
+	<field name="nilai_nilai_akhir" class="java.math.BigDecimal"/>
+	<field name="nilai_grade" class="java.lang.String"/>
+	<field name="nilai_created_at" class="java.sql.Timestamp"/>
+	<field name="nilai_updated_at" class="java.sql.Timestamp"/>
+	<variable name="nomor_urut" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{nilai_id_pelajaran}]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="siswa_tahunMasuk_1" class="java.lang.Integer" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{siswa_tahunMasuk}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="105" splitType="Stretch">
+			<staticText>
+				<reportElement x="131" y="0" width="424" height="20" uuid="81cdd45e-db11-421c-9921-ec448363705e"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[●PLAY GROUP ●KINDERGARTEN ● ELEMENTARY SCHOOL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="54" y="20" width="514" height="56" forecolor="#0F4143" uuid="64c048ae-4d64-4347-8a10-0ebbf146a572"/>
+				<textElement textAlignment="Center">
+					<font size="44" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TIARA SCHOOL]]></text>
+			</staticText>
+			<line>
+				<reportElement x="19" y="88" width="530" height="1" uuid="a2a6ae0b-ee2a-479b-9118-e67223730a50"/>
+			</line>
+			<image>
+				<reportElement x="35" y="6" width="85" height="76" uuid="fdf26910-af44-4781-936e-c28ffd914e42"/>
+				<imageExpression><![CDATA["C:\\Users\\irsyd\\OneDrive\\Dokumen\\NetBeansProjects\\Newest\\Newest\\src\\photos\\logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="177" y="0" width="209" height="20" uuid="cc0691c9-23cc-4781-af7a-1bd5feedd17a"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SURAT KETERANGAN LULUS]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="265" splitType="Stretch">
+			<rectangle>
+				<reportElement x="58" y="245" width="305" height="20" uuid="8e8253ca-266c-4ea7-ac12-f4f9a9eedae0"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="19" y="0" width="530" height="20" uuid="09ef4037-ac83-4ebc-926a-268f8ad17f63"/>
+				<text><![CDATA[Berdasarkan Keputusan Kepala Sekolah Dasar Tiara School tentang Penetapan Kelulusan Peserta Didik Tahun ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="20" width="530" height="20" uuid="8f6230d8-d39f-40d6-bc50-8a5a03c9b244"/>
+				<text><![CDATA[Ajaran 	     	Nomor 182/SKL/SD-TS/]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="40" width="530" height="20" uuid="965b1b36-8b85-4464-b005-92b34193aedf"/>
+				<text><![CDATA[Kepala Sekolah menerangkan bahwa:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="75" width="148" height="20" uuid="0f5e57f4-a233-4a2b-9698-0f0199dd6763"/>
+				<text><![CDATA[Nama Lengkap     ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="167" y="75" width="114" height="20" uuid="41b2e2b1-2b92-4c65-a4de-7930aced0808"/>
+				<textFieldExpression><![CDATA[$F{siswa_nama}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="19" y="95" width="35" height="20" uuid="d2e8f091-f9d2-4436-91c0-a2432fb7657c"/>
+				<text><![CDATA[Tempat]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="167" y="95" width="70" height="20" uuid="f792c674-52fd-47b6-8cb1-6f4cfdc00752"/>
+				<textFieldExpression><![CDATA[$F{siswa_tempatLahir}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="54" y="95" width="113" height="20" uuid="eab17131-d662-40c6-b702-aed99ed57d25"/>
+				<text><![CDATA[Tanggal Lahir]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="115" width="148" height="20" uuid="a6f0afce-a9e4-4368-b44e-9876bc6c4ca6"/>
+				<text><![CDATA[Nomor Induk Siswa Nasional]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="167" y="115" width="114" height="20" uuid="ab0ec1d0-bb89-4c4b-9c4b-b04a9f90994c"/>
+				<textFieldExpression><![CDATA[$F{siswa_NISN}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="19" y="135" width="148" height="20" uuid="639d2ec9-990e-4133-a6c9-bb67aec00553"/>
+				<text><![CDATA[Satuan Pendidikan                         ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="167" y="135" width="114" height="20" uuid="bdc95332-f748-4f4d-879b-c39475fafa3d"/>
+				<text><![CDATA[SD Tiara School]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="155" width="148" height="20" uuid="f26d8dd4-6827-404f-98a7-a25fb8e1f736"/>
+				<text><![CDATA[Nomor Pokok Sekolah Nasional      ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="167" y="155" width="114" height="20" uuid="e1945b99-77c8-483f-8c05-d255c37b9ab1"/>
+				<text><![CDATA[20109064]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="167" y="175" width="114" height="20" uuid="7e218999-b77c-4f25-8509-064e8fbab968"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="195" width="148" height="20" uuid="8465ae44-640a-437a-9b37-3f5949d7e959"/>
+				<text><![CDATA[Dinyatakan                                      ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="167" y="195" width="114" height="20" uuid="6e5725d8-8e95-4445-8754-212180c8992a"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LULUS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="225" width="277" height="20" uuid="49eb02aa-b534-4f83-8552-a754e507afe8"/>
+				<text><![CDATA[Dengan transkip nilai sebagai berikut :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="175" width="148" height="20" uuid="490c4e5b-0e9c-4bf7-a984-6d3858755510"/>
+				<text><![CDATA[Tanggal Kelulusan]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="19" y="245" width="39" height="20" uuid="36418c0b-15c3-42d4-841e-28615a0ee33a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="33" y="245" width="19" height="20" uuid="86e3b3c7-f7c1-477b-862d-d437686049cb"/>
+				<text><![CDATA[No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="82" y="245" width="279" height="20" uuid="48c1d0ec-e1be-4a13-8da8-497735fe5566"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="361" y="245" width="100" height="20" uuid="498f2b1c-2963-41f8-95d9-fa69d0b955e9"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="181" y="245" width="90" height="20" uuid="cb69623d-86ec-4698-b102-72b9ac07f96c"/>
+				<text><![CDATA[Mata Pelajaran]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="388" y="245" width="30" height="20" uuid="712e8c9d-7e20-4b98-9fa0-40956cf74f45"/>
+				<text><![CDATA[Nilai]]></text>
+			</staticText>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="219" y="95" width="94" height="20" uuid="f2444c5e-b780-4a35-802f-4e2e8c751873"/>
+				<textFieldExpression><![CDATA[$F{siswa_tanggalLahir}]]></textFieldExpression>
+			</textField>
+			<elementGroup>
+				<textField pattern="dd MMMMM yyyy">
+					<reportElement x="167" y="175" width="100" height="20" uuid="539cbf15-ced2-4c78-b187-86570f43bef7"/>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<textField pattern="MM/yyyy">
+					<reportElement x="205" y="20" width="100" height="20" uuid="90afdee5-33db-4c17-856a-1456bac95be1"/>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<textField>
+				<reportElement x="49" y="20" width="35" height="20" uuid="baaca1d6-cfd2-4773-bf80-8a1c58daf470"/>
+				<textFieldExpression><![CDATA[$F{siswa_tahunMasuk}+6]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="75" y="20" width="35" height="20" uuid="b339497f-2c55-431d-8df1-f6c1cfcf38c5"/>
+				<textFieldExpression><![CDATA[$F{siswa_tahunMasuk}+7]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="71" y="20" width="15" height="20" uuid="afa1923a-e493-460d-b6d2-1b142ab1e8de"/>
+				<text><![CDATA[/]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<rectangle>
+				<reportElement x="19" y="0" width="39" height="20" uuid="5809f6c7-8b64-4043-94d3-46dcc06dc073"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="58" y="0" width="303" height="20" uuid="63438f53-ff7f-4b8f-9993-d6c3efc5d31e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="361" y="0" width="100" height="20" uuid="831ff2cb-64f8-4a5a-801d-07a0b4d7b66a"/>
+			</rectangle>
+			<textField>
+				<reportElement x="375" y="0" width="72" height="20" uuid="c0832985-d745-4157-80a0-c2ed12df635f"/>
+				<textFieldExpression><![CDATA[$F{nilai_nilai_akhir}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="35" y="0" width="19" height="20" uuid="c51afd0b-765c-42e8-a633-79b7b8464862"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="0" width="249" height="20" uuid="35fc124b-7232-404e-a2b4-4594b7e4acf0"/>
+				<textFieldExpression><![CDATA[$F{nilai_nama_pelajaran}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="161" splitType="Stretch">
+			<staticText>
+				<reportElement x="359" y="42" width="100" height="20" uuid="3abe2bf6-b37d-4452-94a7-e40e8238082e"/>
+				<text><![CDATA[Kepala Sekolah,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="359" y="106" width="169" height="20" uuid="4cf0d192-a0e4-48b0-a75f-203ce37d1e58"/>
+				<text><![CDATA[Drs.Nurrahman Kosasih, MMPd]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="359" y="22" width="100" height="20" uuid="55e5e71d-9d7e-42eb-9e59-0fc96f07888c"/>
+				<text><![CDATA[Jakarta, 2 Juni 2025]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="359" y="126" width="169" height="20" uuid="474ee947-4330-492d-a077-5153239e750e"/>
+				<text><![CDATA[NUKS. 19023L0809164221086881]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="2" width="555" height="20" uuid="68e09cd3-0576-4523-b2a5-0e105d13dc55"/>
+				<text><![CDATA[Surat Keterangan Lulus bersifat sementara sampai diterbitkan ijazah dan Transkrip Nilai peserta didik.]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="63" splitType="Stretch"/>
+	</summary>
+</jasperReport>
